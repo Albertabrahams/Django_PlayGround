@@ -7,3 +7,6 @@ def home(request):
 
 def henry(request):
     return HttpResponse("Henry")
+
+def kral(request):
+    return HttpResponse("Kral")
