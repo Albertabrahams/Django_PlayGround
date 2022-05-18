@@ -10,3 +10,7 @@ def henry(request):
 
 def kral(request):
     return HttpResponse("Kral")
+
+def student_num(request):
+    num_of_stdnt = Cadet.objects.count()
+    return HttpResponse("FS Cohort has {} students". format(num_of_stdnt))
