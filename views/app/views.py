@@ -1,3 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+
+def home(request):
+    return HttpResponse("Hello World")
+
+def special(request):
+    context = {
+        'title': 'clarusway',
+        'dict1': {'django': 'best framework'},
+        'my_list': [2, 3, 4]
+    }
+    return render(request, 'app/special.html', context)

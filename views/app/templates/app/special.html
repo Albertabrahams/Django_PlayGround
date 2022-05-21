@@ -1,0 +1,31 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<h1>This is special page</h1>
+
+
+{{ request.user }}
+<br>
+<h1>The best bootcamp is {{title|title}}</h1>
+
+{{ title | truncatechars:4 }} <br>
+{{ title | slice:":2"}}
+
+{{ dict1.django | capfirst }}
+
+{# This is a comment line #}
+{% for i in my_list %}
+<li>{{i}}</li>
+{% endfor %}
+
+{% comment %}
+    yorummmmm
+    bir 
+    daha
+{% endcomment %}
+
+<img src="{% static 'app/Cat03.jpg' %}" alt="cat" width="150px" >
+    
