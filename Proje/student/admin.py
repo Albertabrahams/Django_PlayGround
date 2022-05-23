@@ -4,3 +4,4 @@ from student import Cadet
 
 admin.site.register(Cadet)
 
+
