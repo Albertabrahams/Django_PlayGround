@@ -23,7 +23,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+            {% if request.user.is_authenticated %}  {% if request.user.is_superuser %}
 
             <li class="nav-item active">
                 <a class="nav-link" href="/admin">Admin</a>
@@ -34,17 +34,19 @@
                 {% comment %} {% url 'logout' %} {% endcomment %}
                 <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
             </li>
+            
             {% else %}
 
             <li class="nav-item active">
                 {% comment %} {% url 'user_login' %} {% endcomment %}
                 <a class="nav-link" href="{% url 'user_login' %}">Log In</a>
             </li>
-            {% endif %}
+            
             <li class="nav-item active">
                 {% comment %} {% url 'register' %} {% endcomment %}
                 <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
