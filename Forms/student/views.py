@@ -5,6 +5,7 @@ from django.contrib import messages
 def index(request):
     return render(request, 'student/index.html')
 
+
 def student_page(request):
     # print(request.POST)
     form = StudentForm(request.POST or None)
