@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Student
 from .forms import StudentForm
 
+
 def index(request):
     return render(request, 'fscohort/index.html')
 
