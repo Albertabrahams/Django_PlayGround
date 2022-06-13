@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Student
+from .models import Path, Student
+from django.utils.timezone import now
 
 # class StudentSerializer(serializers.Serializer):
 #     first_name = serializers.CharField(max_length=30)
@@ -18,12 +19,33 @@ from .models import Student
 #         return instance
 
 class StudentSerializer(serializers.ModelSerializer):
+    days_since_joined = serializers.SerializerMethodField()
     class Meta:
         model = Student
-        fields = ["id", "first_name", "last_name", "number"]
+        # if you use '__all__' there is no problem but if you want to add manually, you have to add days_since_joined at the end.
+        fields = ["id", "first_name", "last_name", "number", "days_since_joined"]
 
     def validate_number(self, value):
 
         if value > 1000:
             raise serializers.ValidationError("Number must be below 1000")
         return value
+    
+    def validate_first_name(self, value):
+        if value.lower() == "rafe":
+            raise serializers.ValidationError("Rafe can not be!")
+        return value
+
+    def get_days_since_joined(self, obj):
+        return (now()- obj.register_date).seconds
+
+class PathSerializer(serializers.ModelSerializer):
+    # students = StudentSerializer(many=True)
+    # students = serializers.StringRelatedField(many=True)
+    students = serializers.PrimaryKeyRelatedField(many=True, read_only=True) # you have to add read only
+
+    class Meta:
+        model = Path
+        fields = '__all__'
+
+class 
