@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     home, 
     # hello_world, 
@@ -8,18 +8,19 @@ from .views import (
     # todoUpdate, 
     # todoDelete,
     # TodoListCreate,
-    # TodoGetUpdateDelete,
     # TodoDetail,
+    # TodoGetUpdateDelete,
     TodoMVS
 )
 
 from rest_framework import routers
+
 router = routers.DefaultRouter()
-router.register('todos', TodoMVS)
+router.register('todos', TodoMVS )
 
 
 urlpatterns = [
-    path('', home),
+    # path('', home),
     
     #* Function Based Views
     # path('hello/', hello_world),
@@ -31,8 +32,8 @@ urlpatterns = [
     
     #* Class Based Views
     # path("list/", TodoListCreate.as_view()),
-    # path("detail/<int:id>/", TodoGetUpdateDelete.as_view()),
-    # path("detail/<int:id>", TodoDetail.as_view()),
+    # path("detail/<int:id>", TodoGetUpdateDelete.as_view()),
+    path('', include(router.urls))
 ]
 
-urlpatterns += router.urls
+# urlpatterns += router.urls
