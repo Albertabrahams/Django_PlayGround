@@ -15,6 +15,9 @@ from rest_framework import mixins, viewsets
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import action
 
+# pagination classes:
+from .pagination import MyLimitOffsetPagination, SmallPageNumberPagination, LargePageNumberPagination
+
 # Create your views here.
 def home(request):
     return HttpResponse(
@@ -171,14 +174,17 @@ def todoDelete(request, pk):
 class TodoMVS(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+
+    # pagination_class = LargePageNumberPagination
+    pagination_class = MyLimitOffsetPagination
         
-    @action(methods=["GET"], detail=False)
-    def todo_count(self, request):
-        todo_count = Todo.objects.filter(done=False).count()
-        count = {
-            'undo-todos': todo_count
-        }
-        return Response(count)    
+    # @action(methods=["GET"], detail=False)
+    # def todo_count(self, request):
+    #     todo_count = Todo.objects.filter(done=False).count()
+    #     count = {
+    #         'undo-todos': todo_count
+    #     }
+    #     return Response(count)    
 
 
         

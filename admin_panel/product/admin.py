@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug' : ('name',)}   # when adding product in admin site
     list_per_page = 25
     date_hierarchy = "update_date"  
+    
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'created_date', 'is_released')

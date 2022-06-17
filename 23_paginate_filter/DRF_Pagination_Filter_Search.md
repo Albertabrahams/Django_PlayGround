@@ -127,7 +127,7 @@ REST_FRAMEWORK = {
 This pagination style accepts a single page number in the request query parameters. 
 ```
 GET https://api.example.org/accounts/?page=4
-GET http://127.0.0.1:8000/?page=2
+GET http://127.0.0.1:8000/todos/?page=2
 ```
 
 - To enable the PageNumberPagination style globally, use the following configuration, and set the PAGE_SIZE as desired:
