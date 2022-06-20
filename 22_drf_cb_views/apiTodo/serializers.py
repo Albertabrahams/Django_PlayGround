@@ -6,5 +6,5 @@ class TodoSerializer(serializers.ModelSerializer):
     todo_detail = serializers.HyperlinkedIdentityField(view_name="todo-detail")
     class Meta:
         model= Todo
-        fields = ("id", "task","description","priority", "done", "todo_detail" ,  "updateDate", "createdDate" )
+        fields = ('id', 'task', 'description', 'priority', 'done', 'updateDate', 'createdDate', 'todo_detail')
         

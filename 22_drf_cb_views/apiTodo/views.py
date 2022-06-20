@@ -95,7 +95,7 @@ def todoDelete(request, pk):
     querset.delete()
     return Response("Item Deleted")
      """
- 
+   
 #! Class Based Views
 
 # class TodoList(APIView):
@@ -167,17 +167,17 @@ def todoDelete(request, pk):
 #     lookup_field = "id"
     
 
-# class TodoMVS(viewsets.ModelViewSet):
-#     queryset = Todo.objects.all()
-#     serializer_class = TodoSerializer
+class TodoMVS(viewsets.ModelViewSet):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
         
-#     @action(methods=["GET"], detail=False)
-#     def todo_count(self, request):
-#         todo_count = Todo.objects.filter(done=False).count()
-#         count = {
-#             'undo-todos': todo_count
-#         }
-#         return Response(count)    
+    @action(methods=["GET"], detail=False)
+    def todo_count(self, request):
+        todo_count = Todo.objects.filter(done=False, priority="H").count()
+        count = {
+            'undo-todos': todo_count
+        }
+        return Response(count)    
 
 
         
